@@ -1,8 +1,14 @@
-### Template for a new project
+# Expense Tracker App
 
-# Before you start do a "npm install in the root folder"
-- necessary dependencies which are in the package.json file
-   - [x] Sass
-   - [x] Eslint
-- Header Component with style file
-- Footer Component with style file
+## This is a simple expense tracker application. It is built with React and Firebase.
+
+---
+
+To use this app, you need to sign up for a free account. Then log in and startart keeping track of your expenses.
+
+Upcoming features:
+
+-   Responsive design
+-   More Detailed Expense Report
+
+Link to the application: [Expense Tracker](https://expense-tracker-mehedi.netlify.app/)
