@@ -7,11 +7,13 @@ export default function Details({ user, addCash, removeCash, money, setMoney, id
         type: "cash_in",
         money: money,
         date: new Date(),
+        time: new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds(),
     };
     const cashOut = {
         type: "cash_out",
         money: money,
         date: new Date(),
+        time: new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds(),
     };
 
     // Sign Out
@@ -53,12 +55,10 @@ export default function Details({ user, addCash, removeCash, money, setMoney, id
                         <li key={index}>
                             <p>{cash.type.split("_").join(" ")}</p>
                             <p>{cash.money}</p>
-                            <p>{new Date(cash.date.seconds * 1000 + cash.date.nanoseconds).toLocaleDateString()}</p>
                             <p>
-                                {new Date(cash.date.seconds * 1000 + cash.date.nanoseconds)
-                                    .toLocaleTimeString()
-                                    .slice(0, 8)}
+                                {new Date(cash.date.seconds * 1000 + cash.date.nanoseconds / 1000).toLocaleDateString()}
                             </p>
+                            <p>{cash.time}</p>
                             <button className="remove" onClick={(event) => removeCash(cash, id)}>
                                 Remove
                             </button>
