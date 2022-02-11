@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./main.style.scss";
 import { db } from "../../firebase-config";
-import { getDoc, collection, getDocs, updateDoc, arrayUnion, arrayRemove, doc, increment } from "firebase/firestore";
+import { getDoc, updateDoc, arrayUnion, arrayRemove, doc, increment } from "firebase/firestore";
 import Details from "../details/details.component";
 
 function Main({ user, setUser, id }) {

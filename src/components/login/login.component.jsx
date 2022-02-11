@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.style.scss";
 import { db } from "../../firebase-config";
-import { getDoc, doc, collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 export default function Login({ user, setUser, id, setId }) {
     const [email, setEmail] = useState("");

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.style.scss";
 import { db } from "../../firebase-config";
-import { addDoc, doc, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function Signup() {
     const [name, setName] = useState("");
