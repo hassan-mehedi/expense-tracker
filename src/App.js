@@ -1,69 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Route, Routes, BrowserRouter as Router, Navigate } from "react-router-dom";
 import "./App.css";
-import { db } from "./firebase-config";
-import { collection, getDocs, updateDoc, arrayUnion, arrayRemove, doc, increment } from "firebase/firestore";
-import Details from "./components/details/details.component";
+import Main from "./components/main/main.component";
+import Login from "./components/login/login.component";
+import Signup from "./components/signup/signup.component";
 
 function App() {
-    const [money, setMoney] = useState(0);
-    const [users, setUsers] = useState([]);
-    const usersCollectionRef = collection(db, "user");
-
-    // Get users from firestore
-    const getUsers = async () => {
-        const data = await getDocs(usersCollectionRef);
-        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    // Add cash
-    const addCash = async (cash, userId) => {
-        const usersRef = doc(db, "user", userId);
-
-        if (cash.money < 1) {
-            alert(`You can't ${cash.type} less than 1$`);
-            return;
-        }
-        if (cash.type === "cash_out") {
-            cash.money = -1 * cash.money;
-        }
-
-        await updateDoc(usersRef, {
-            cash: arrayUnion(cash),
-            balance: increment(cash.money),
-        });
-        setMoney(0);
-        getUsers();
-    };
-
-    // Remove cash
-    const removeCash = async (cashObj, userId) => {
-        const usersRef = doc(db, "user", userId);
-
-        await updateDoc(usersRef, {
-            cash: arrayRemove(cashObj),
-        });
-
-        getUsers();
-    };
-
-    useEffect(() => {
-        getUsers();
-    }, []);
-
+    const [user, setUser] = useState(null);
+    const [id, setId] = useState(null);
     return (
         <div className="App">
-            {users.map((user) => {
-                return (
-                    <Details
-                        money={money}
-                        setMoney={setMoney}
-                        user={user}
-                        key={user.id}
-                        addCash={addCash}
-                        removeCash={removeCash}
-                    />
-                );
-            })}
+            <Router>
+                <Routes>
+                    <Route
+                        exact
+                        path="/login"
+                        element={<Login user={user} setUser={setUser} id={id} setId={setId} />}
+                    ></Route>
+                    <Route exact path="/" element={<Navigate replace to="/login" />}></Route>
+                </Routes>
+                <Routes>
+                    <Route exact path="/signup" element={<Signup />}></Route>
+                </Routes>
+                <Routes>
+                    <Route exact path="/main" element={<Main user={user} id={id} setUser={setUser} />}></Route>
+                </Routes>
+            </Router>
         </div>
     );
 }

@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto";
+}
+.details {
+    height: 550px;
+    width: 550px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        button {
+            background-color: rgba(200, 0, 0, 1);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        button:hover {
+            background-color: rgba(250, 0, 0, 1);
+        }
+    }
+    .amount {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #efefef;
+    }
+    .green,
+    .red,
+    .remove {
+        color: white;
+        cursor: pointer;
+        border: none;
+        padding: 10px 0;
+        border-radius: 5px;
+    }
+    .red {
+        background-color: red;
+    }
+    .red:hover {
+        background-color: rgba(200, 0, 0, 1);
+    }
+    .green {
+        background-color: green;
+    }
+    .green:hover {
+        background-color: rgba(0, 200, 0, 1);
+    }
+    .remove {
+        background-color: #ff0000;
+    }
+    ul {
+        overflow-y: scroll;
+        height: 300px;
+        // Hide Scrollbar
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        border: 1px solid #ccc;
+        .header {
+            font-weight: 700;
+        }
+        li {
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px 5px;
+            background-color: rgba(255, 200, 255, 0.1);
+            p,
+            button {
+                // border: 1px solid black;
+                width: 20%;
+                padding: 10px 0;
+                cursor: pointer;
+            }
+        }
+    }
+    // Hide Scrollbar
+    ul::-webkit-scrollbar {
+        display: none;
+    }
+}
