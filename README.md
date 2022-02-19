@@ -4,7 +4,7 @@
 
 ---
 
-To use this app, you need to sign up for a free account. Then log in and startart keeping track of your expenses.
+To use this app, you need to sign up for a free account. Then log in and start keeping track of your expenses.
 
 Upcoming features:
 
